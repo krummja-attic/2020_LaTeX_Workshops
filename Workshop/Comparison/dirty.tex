@@ -1,0 +1,47 @@
+% arara: xelatex
+
+\documentclass{article}
+\usepackage{fontspec}
+% \usepackage[utf8]{inputenc}
+\usepackage{subfiles}
+% \usepackage{ebgaramond}
+\usepackage{graphicx}
+\usepackage{amsmath, amsfonts}
+\usepackage{expex}
+\usepackage{tipa}
+% \usepackage{natbib}
+% \usepackage{biblatex}
+\usepackage{pstricks}
+\usepackage{pst-xkey}
+% \usepackage{pst-jtree}
+\usepackage{qtree}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\begin{document}
+\section{Introduction}
+Hello world!
+
+\section{Math Example}
+A set \( \mathcal{S} \) in \( \mathbb{R}^n \) is said to be convex if
+\[ \mathbf{x}_1, \mathbf{x}_2 \in \mathcal{S} \implies \lambda \mathbf{x}_1 +
+(1-\lambda) \mathbf{x}_2 \in \mathcal{S} \text{~~~for all~~~} 0 < \lambda < 1 \]
+
+
+% Show a table with multiple cells containing the same content, then show how we can use multirow/multicol to make it slick
+
+\vspace{2cm}
+
+\begin{tabular}{| l | l | l | l |}
+  \hline
+  foo & bar & bash & blah \\
+  \hline
+  blah & bar & meh & meh \\
+  \hline
+  phlegm & lorem & ipsum & dolor \\
+  \hline
+\end{tabular}
+
+\end{document}

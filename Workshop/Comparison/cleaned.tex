@@ -1,0 +1,46 @@
+% arara: xelatex
+
+\documentclass{article}
+\input{../preamble.tex}
+\input{../macros.tex}
+
+\begin{document}
+
+% Introduction ====================================== %
+\section{Introduction}
+
+Hello, world!
+
+
+% Math Example ====================================== %
+\section{Math Example}
+
+A set $\Set$ in $\Rn$ is said to be convex if
+  \[
+      \x_1, \x_2 \in \Set \imps \y\x_1 + (1 - \y) \x_2
+      \in \Set \tx{ for all } 0 < \y < 1
+  \]
+
+
+% Table Example ===================================== %
+\section{Table Example}
+
+\begin{tabular}{| c | c | c | c |}
+                                                 \hl
+  foo     & \twor{bar}   & bash        & blah  \\\clv{1-1}{3-4}
+  blah    &              & \twoc{meh}          \\\hl
+  phlegm  & lorem        & ipsum       & dolor \\\hl
+\end{tabular}
+
+% Also show example of table within table and table within formula!
+
+% Custom Environments
+\section{Custom Environments}
+
+% Colors & Font Tricks
+\section{Colors \& Fonts}
+
+% Bibtex/Biber
+\section{Citations}
+
+\end{document}
