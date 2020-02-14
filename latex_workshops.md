@@ -22,7 +22,9 @@
 - Show using Zotero in my workflow!!
 
 - engines
-
+  - Differences in engines
+  - How to set up minimal preambles for each (see below)
+  - Why you should be using XeTeX tbqh
 
 
 

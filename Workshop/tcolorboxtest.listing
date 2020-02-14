@@ -1,0 +1,9 @@
+  function SomeClass(obj) {
+    this.name = obj.name;
+    this.surname = obj.surname;
+  }
+
+  var instantiate = new SomeClass({
+    name: 'Jonathan',
+    surname: 'Crum'
+  });

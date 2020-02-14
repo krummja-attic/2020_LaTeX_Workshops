@@ -1,0 +1,39 @@
+% Symbols
+\newcommand{\y}{\lambda}          % λ
+\newcommand{\imps}{~\implies~}    % ==>
+\newcommand{\Rn}{\mathbb{R}^n}    % Math R
+\newcommand{\Set}{\mathcal{S}}    % Set S
+
+% Typography
+\newcommand{\x}{\mathbf{x}}       % bold x
+
+% Meta
+\newcommand{\tx}[1]{\text{#1}}    % TEXT environment
+
+% Tables
+\newcommand{\hl}{\hline}
+\newcommand{\twor}[1]{\multirow{2}{*}{#1}}
+\newcommand{\clv}[2]{\cline{#1}\cline{#2}}
+\newcommand{\twoc}[1]{\multicolumn{2}{c |}{#1}}
+
+% Custom Commands and Environments
+
+\newenvironment{mybox}[1]
+{\begin{center}
+#1\\[1ex]
+\begin{tabular}{|p{0.6\textwidth}|}
+\hline\\
+}
+{
+\\\\\hline
+\end{tabular}
+\end{center}
+}
+
+\renewenvironment{itemize}{\begin{center}\em}{\end{center}}
+
+% Annotated Bib
+\newcommand{\anentry}[2]{
+  \nocite{#1}
+  \printbibliography[keyword={#1}, title={#2}]
+}

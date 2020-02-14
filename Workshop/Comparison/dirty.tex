@@ -18,30 +18,49 @@
 \usepackage{hyperref}
 \usepackage{comment}
 \usepackage{enumitem}
+\usepackage{lipsum}
 \usepackage[margin=2cm]{geometry}
 
+\title{A Regular \LaTeX\ Document}
+\author{Jonathan Crum}
+\date{}
+
 \begin{document}
+\maketitle
+
 \section{Introduction}
-Hello world!
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui id ornare arcu odio ut sem. Id consectetur purus ut faucibus pulvinar elementum integer enim. Integer quis auctor elit sed vulputate. Morbi quis commodo odio aenean sed adipiscing. Quisque egestas diam in arcu cursus. Eget est lorem ipsum dolor sit amet. Feugiat nibh sed pulvinar proin gravida. Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. Accumsan sit amet nulla facilisi morbi. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque.
 
 \section{Math Example}
 A set \( \mathcal{S} \) in \( \mathbb{R}^n \) is said to be convex if
 \[ \mathbf{x}_1, \mathbf{x}_2 \in \mathcal{S} \implies \lambda \mathbf{x}_1 +
 (1-\lambda) \mathbf{x}_2 \in \mathcal{S} \text{~~~for all~~~} 0 < \lambda < 1 \]
 
+\section{Tables}
+\vspace{1cm}
+Sit amet consectetur adipiscing elit pellentesque. Ut consequat semper viverra nam libero justo laoreet sit amet. Volutpat sed cras ornare arcu dui vivamus arcu felis. Augue ut lectus arcu bibendum at. Eget arcu dictum varius duis. Consequat interdum varius sit amet mattis vulputate enim. Nulla pharetra diam sit amet nisl suscipit adipiscing. Ullamcorper eget nulla facilisi etiam dignissim diam. Egestas quis ipsum suspendisse ultrices gravida dictum fusce. Ornare suspendisse sed nisi lacus sed viverra. Placerat in egestas erat imperdiet sed. Nullam ac tortor vitae purus faucibus. Vitae sapien pellentesque habitant morbi tristique senectus et netus. Et netus et malesuada fames ac turpis egestas. Tristique et egestas quis ipsum suspendisse. Eget sit amet tellus cras adipiscing enim eu turpis. Dui accumsan sit amet nulla facilisi morbi.
 
-% Show a table with multiple cells containing the same content, then show how we can use multirow/multicol to make it slick
+\vspace{0.5cm}
 
-\vspace{2cm}
-
-\begin{tabular}{| l | l | l | l |}
-  \hline
-  foo & bar & bash & blah \\
-  \hline
-  blah & bar & meh & meh \\
-  \hline
-  phlegm & lorem & ipsum & dolor \\
-  \hline
+\begin{tabular}{|l|l|l|l|}
+\hline
+foo & bar & bash & blah \\
+\hline
+blah & bar & meh & meh \\
+\hline
+phlegm & lorem & ipsum & dolor \\
+\hline
 \end{tabular}
+
+\vspace{0.5cm}
+
+As you can see in Table 2, we have lost our numbering completely...
+
+Hac habitasse platea dictumst quisque sagittis purus sit amet volutpat. Lacus vestibulum sed arcu non. Tortor at risus viverra adipiscing at in tellus. Ipsum nunc aliquet bibendum enim facilisis gravida neque convallis. Phasellus vestibulum lorem sed risus ultricies tristique. Et netus et malesuada fames ac turpis egestas. Sem nulla pharetra diam sit amet nisl suscipit adipiscing. Et ligula ullamcorper malesuada proin libero nunc. Pellentesque dignissim enim sit amet venenatis urna. Tempor orci eu lobortis elementum nibh tellus molestie nunc non. Volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque. Vitae suscipit tellus mauris a diam maecenas sed enim. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Felis imperdiet proin fermentum leo vel orci. Elit ut aliquam purus sit amet luctus. Pellentesque dignissim enim sit amet venenatis urna cursus eget nunc. Urna neque viverra justo nec ultrices dui sapien eget. Erat pellentesque adipiscing commodo elit at. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras.
+
+Magna etiam tempor orci eu lobortis elementum. Quisque non tellus orci ac auctor. Tempor nec feugiat nisl pretium. Feugiat nibh sed pulvinar proin gravida hendrerit. Fames ac turpis egestas sed tempus urna et pharetra pharetra. Egestas tellus rutrum tellus pellentesque eu. Aliquam etiam erat velit scelerisque. At in tellus integer feugiat scelerisque varius morbi enim nunc. Sit amet consectetur adipiscing elit pellentesque habitant. Sed adipiscing diam donec adipiscing tristique risus nec. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Sed elementum tempus egestas sed. Vitae congue eu consequat ac felis donec et odio pellentesque. Dui ut ornare lectus sit. Elementum nibh tellus molestie nunc non blandit massa.
+
+Cras fermentum odio eu feugiat pretium nibh ipsum consequat nisl. Massa eget egestas purus viverra accumsan in nisl nisi. Turpis egestas pretium aenean pharetra magna ac. Sed risus pretium quam vulputate. Molestie nunc non blandit massa enim. Suscipit tellus mauris a diam maecenas sed enim ut sem. Eu feugiat pretium nibh ipsum. Et odio pellentesque diam volutpat commodo sed egestas egestas fringilla. Ut eu sem integer vitae justo. Arcu vitae elementum curabitur vitae nunc sed.
 
 \end{document}

@@ -1,0 +1,103 @@
+% arara: xelatex
+% arara: xelatex
+
+\documentclass[11pt]{article}
+\input{../meta/preamble.tex}
+\input{../meta/macros.tex}
+
+\linespread{1.25}
+
+\begin{document}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing. Consectetur lorem donec massa sapien faucibus et molestie. Vel facilisis volutpat est velit egestas dui. Mi bibendum neque egestas congue. Laoreet id donec ultrices tincidunt arcu non sodales neque sodales. Ante in nibh mauris cursus mattis molestie a. Mollis nunc sed id semper. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Praesent elementum facilisis leo vel fringilla. Fringilla urna porttitor rhoncus dolor purus non enim praesent. Pharetra convallis posuere morbi leo. Vitae tempus quam pellentesque nec nam aliquam. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut. Suspendisse in est ante in nibh. Sit amet aliquam id diam maecenas ultricies mi eget mauris. Donec enim diam vulputate ut. Ut porttitor leo a diam.
+
+\begin{shaded}
+  \begin{defn}
+    This is an example definition!
+  \end{defn}
+\end{shaded}
+
+Cursus euismod quis viverra nibh. Non quam lacus suspendisse faucibus. Sed nisi lacus sed viverra tellus in hac habitasse platea. Sit amet tellus cras adipiscing enim. Euismod nisi porta lorem mollis aliquam ut porttitor leo. Donec pretium vulputate sapien nec sagittis aliquam. Sit amet risus nullam eget felis eget. Scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus pretium quam vulputate. Sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Aliquet enim tortor at auctor urna. Dignissim diam quis enim lobortis scelerisque fermentum dui. Sed id semper risus in. Ornare arcu dui vivamus arcu felis bibendum ut. Diam ut venenatis tellus in metus vulputate eu scelerisque felis. Non odio euismod lacinia at. Eu turpis egestas pretium aenean. Sed risus ultricies tristique nulla aliquet. Phasellus egestas tellus rutrum tellus pellentesque eu. Auctor augue mauris augue neque gravida in.
+
+% Table Example ===================================== %
+\section{Table Example}
+
+\begin{tabular}{| c | c | c | c |}
+                                                 \hl
+  foo     & \twor{bar}   & bash        & blah  \\\clv{1-1}{3-4}
+  blah    &              & \twoc{meh}          \\\hl
+  phlegm  & lorem        & ipsum       & dolor \\\hl
+\end{tabular}
+
+Ipsum nunc aliquet bibendum enim facilisis gravida neque convallis. Arcu ac tortor dignissim convallis. Porttitor leo a diam sollicitudin. Massa eget egestas purus viverra accumsan in. Quam adipiscing vitae proin sagittis nisl rhoncus. Consequat ac felis donec et odio. Lobortis scelerisque fermentum dui faucibus in. Nunc sed blandit libero volutpat sed cras ornare. Sit amet est placerat in. Elit ullamcorper dignissim cras tincidunt lobortis feugiat. In fermentum et sollicitudin ac orci phasellus.
+
+% Labels & Numbering =============================== %
+
+\section{Labels}
+\label{sec:labels}
+
+\begin{table}[h]
+  \begin{center}
+\begin{tabular}{| c | c |}
+  some & basic \\
+  info & here \\
+\end{tabular}
+\end{center}
+\caption{A Table} \label{tab:mytable}
+\end{table}
+
+\vspace{0.5cm}
+
+In this section, Section \ref{sec:labels}, we can see an example of labeling. In this case, you can see Table \ref{tab:mytable}.
+
+Et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut. Mauris sit amet massa vitae tortor condimentum lacinia quis. Eu augue ut lectus arcu bibendum at varius vel pharetra. Quis auctor elit sed vulputate mi sit. Malesuada fames ac turpis egestas maecenas pharetra convallis posuere. Habitant morbi tristique senectus et netus. Ipsum dolor sit amet consectetur adipiscing elit. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Lacinia at quis risus sed vulputate. Dictumst quisque sagittis purus sit. Convallis a cras semper auctor neque vitae tempus quam. Viverra ipsum nunc aliquet bibendum enim facilisis gravida. Sit amet cursus sit amet dictum sit amet.
+
+% Minipages ======================================== %
+\section{Minipages}
+
+\pex
+\begin{minipage}[t]{0.45\textwidth}
+  \begingl
+  \glpreamble \textarmenian{կարող եմ գրել հայերենով} //
+  \gla karo\l{} em gr-el hayeren-ov //
+  \glb able {\sc 1sg.pres} write-{\sc inf} Armenian-{\sc inst} //
+  \glft `I am able to write in Armenian.' //
+  \endgl
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+  \Tree [.ModP [.Mod karo\l{} ]
+          [.TP [.T {\sc pres} ]
+            [.VP [.V em ]
+              [.TP [.PRO ] [.T [.T -el ]
+                [.VP [.V gr ]
+                  [.NP [.N hayerenov ]
+        ] ] ] ] ] ] ]
+\end{minipage}
+\xe
+
+% Custom Environments ============================== %
+\section{Custom Environments}
+
+Et sollicitudin ac orci phasellus egestas. Cras adipiscing enim eu turpis egestas pretium aenean pharetra magna. Sit amet nulla facilisi morbi tempus. Quam adipiscing vitae proin sagittis nisl rhoncus mattis. Fermentum leo vel orci porta non pulvinar neque laoreet. Mauris cursus mattis molestie a iaculis at erat. Facilisis mauris sit amet massa vitae tortor condimentum. Nulla facilisi nullam vehicula ipsum a arcu cursus vitae congue. Volutpat est velit egestas dui id ornare arcu odio ut. Egestas tellus rutrum tellus pellentesque. Aliquam id diam maecenas ultricies. Velit laoreet id donec ultrices tincidunt arcu non sodales. Vulputate mi sit amet mauris. Tellus molestie nunc non blandit massa enim nec dui nunc. Sit amet aliquam id diam maecenas ultricies mi eget. Eget est lorem ipsum dolor sit amet. Quis auctor elit sed vulputate mi sit amet mauris. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper.
+
+\begin{mybox}{Title of the Box}
+  This is some stuff in a box!
+\end{mybox}
+
+\begin{itemize}
+  Testing!
+\end{itemize}
+
+% Math Example ===================================== %
+\section{Math Example}
+
+% Different math environments (inline, block)
+% Ways of using math
+
+A set $\Set$ in $\Rn$ is said to be convex if
+\[
+\x_1, \x_2 \in \Set \imps \y\x_1 + (1 - \y) \x_2
+\in \Set \tx{ for all } 0 < \y < 1
+\]
+
+\end{document}

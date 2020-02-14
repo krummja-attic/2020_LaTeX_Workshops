@@ -1,0 +1,494 @@
+% arara: xelatex
+% arara: xelatex
+
+\documentclass[11pt]{article}
+\input{../meta/preamble.tex}
+\input{../meta/macros.tex}
+
+\usetikzlibrary{shapes,arrows}
+
+\title{\LaTeX\ Workshop}
+\author{Jonathan Crum}
+\linespread{1.25}
+
+\begin{document}
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\section{Compilation}
+
+Note that I will be manually compiling throughout this discussion. I highly recommend using the \XeLaTeX\ compiler, although note that some packages can conflict and require the use of pdf\LaTeX\ . For my own case, many of my discipline-specific packags require \XeLaTeX\ , and unless you really have a good reason, I would suggest doing the same.
+
+One thing to bear in mind is that \XeLaTeX\ is aready UTF-8 enabled, so do not call \texttt{inputenc} when using it.
+
+\section{Preamble}
+\subsection{Basic Boilerplate}
+\begin{shaded}
+  \begin{verbatim}
+  \documentclass{article}
+  \usepackage{fontspec}
+  \setmainfont{EB Garamond}
+
+  \begin{document}
+  Test of \LaTeX\ with Unicode! Matthäuspassion
+  \end{document}
+\end{verbatim}
+\end{shaded}
+
+\subsection{Opinionated Boilerplate}
+\begin{shaded}
+  \begin{verbatim}
+\usepackage{xltxtra}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage[margin=2cm]{geometry}
+\end{verbatim}
+\end{shaded}
+
+\subsection{Multi-Language}
+\begin{shaded}
+  \begin{verbatim}
+\usepackage{polyglossia}
+\newfontfamily{\armenianfont}[Scale=0.9]{DejaVu Serif}
+\setotherlanguage{armenian}
+\setmainlanguage{english}
+\end{verbatim}
+\end{shaded}
+
+\subsection{Discipline Specific}
+\begin{shaded}
+  \begin{verbatim}
+\usepackage{pstricks, pst-xkey, pst-jtree, expex, qtree}
+\usepackage{amsmath, amsthm, amsfonts, stmaryrd}
+\end{verbatim}
+\end{shaded}
+
+\section{Macros}
+Throughout this workshop we will be defining (or in some cases redefining) custom commands and environments to make our lives easier.
+
+\subsection{Custom Commands}
+As an example of what I mean, in my own writing I might need to use special characters that are most easily typeset using a particular package. Rather than constantly typing the full command, I can define a {\sc custom command} that does exactly what I want in significantly fewer keystrokes.
+
+\begin{shaded}
+  \begin{verbatim}
+\newcommand{\ipa}{\textipa}
+\newcommand{\uu}{{\small \textipa{0}}}
+\newcommand{\uun}{{\small \textipa{\~{0}}}}
+\end{verbatim}
+\end{shaded}
+
+\subsection{Custom Environments}
+Moreover, I might want to have a specific formatting in my document that requires the repetition of a set of environments nested in one another. I can again make my life a lot easier by defining a {\sc custom environment} that does exactly this.
+
+\begin{shaded}
+  \begin{verbatim}
+\newenvironment{mybox}[1]
+{\begin{center}
+#1\\[1ex]
+\begin{tabular}{|p{0.6\textwidth}|}
+\hline\\
+}
+{
+\\\\\hline
+\end{tabular}
+\end{center}
+}
+
+\renewenvironment{itemize}{\begin{center}\em}{\end{center}}
+
+\begin{mybox}{Title of the Box}
+  This is some stuff in a box!
+\end{mybox}
+
+\begin{itemize}
+  Testing!
+\end{itemize}
+\end{verbatim}
+\end{shaded}
+
+\section{Font and Color}
+\subsection{Basic Case}
+
+\begin{shaded}
+\begin{verbatim}
+\usepackage{xcolor}
+This is some {\color{red} red text!}
+
+\pagecolor{black}
+\color{white}
+\end{verbatim}
+\end{shaded}
+
+\subsection{More Advanced}
+
+\begin{shaded}
+\begin{verbatim}
+\usepackage[dvipsnames]{xcolor}
+
+\definecolor{mycolor1}{rgb}{0.858, 0.188, 0.478}
+\definecolor{mycolor2}{RGB}{219, 48, 122}
+\definecolor{mycolor3}{cmyk}{0, 0.7808, 0.4429, 0.1412}
+\definecolor{mycolor4}{HTML}{00F9DE}
+\definecolor{mycolor5}{gray}{0.6}
+
+\colorlet{LightRubineRed}{RubineRed!70!}
+\colorlet{mycolor}{green!10!orange!90!}
+
+\colorbox{red}{some text}
+\end{verbatim}
+\end{shaded}
+
+\subsection{Even More Advanced}
+\begin{shaded}
+\begin{verbatim}
+  \usepackage{framed} % framed, shaded, leftbar
+  \usepackage[all]{tcolorbox}
+  \usepackage{xcolor}
+    \colorlet{shadecolor}{orange!15}
+  \theoremstyle{definition} % dep: amsthm
+    \newtheorem{exer}{Exercise}
+    \newtheorem{defn}{Definition}
+    \newtheorem{diag}{Diagram}
+    \newtheorem{dirn}{Direction}
+\end{verbatim}
+\end{shaded}
+
+\begin{shaded}
+  \begin{verbatim}
+\begin{shaded}
+  \begin{defn}
+    This is an example definition!
+  \end{defn}
+\end{shaded}
+\end{verbatim}
+\end{shaded}
+
+\subsection{Package \texttt{tcolorbox}}
+\begin{shaded}
+\begin{verbatim}
+\newtcblisting{myjs}{listing engine=minted,
+  minted style=colorful,
+  minted language=javascript,
+  minted options={
+    fontsize=\small,
+    breaklines,
+    autogobble,
+    linenos,
+    numbersep=3mm},
+  colback=blue!5!white,colframe=blue!75!black,listing only,
+  left=5mm,enhanced,
+  overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+    rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}}
+\end{verbatim}
+\end{shaded}
+
+\begin{shaded}
+\begin{verbatim}
+\begin{myjs}
+  function SomeClass(obj) {
+    this.name = obj.name;
+    this.surname = obj.surname;
+  }
+
+  var instantiate = new SomeClass({
+    name: 'Jonathan',
+    surname: 'Crum'
+  });
+\end{myjs}
+\end{verbatim}
+\end{shaded}
+
+\section{Tables}
+\subsection{Basic Case}
+
+\begin{shaded}
+\begin{verbatim}
+\begin{tabular}{|l|l|l|l|}
+\hline
+foo & bar & bash & blah \\
+\hline
+blah & bar & meh & meh \\
+\hline
+phlegm & lorem & ipsum & dolor \\
+\hline
+\end{tabular}
+\end{verbatim}
+\end{shaded}
+
+\subsection{New Customs}
+\begin{shaded}
+  \begin{verbatim}
+\newcommand{\hl}{\hline}
+\newcommand{\twor}[1]{\multirow{2}{*}{#1}}
+\newcommand{\clv}[2]{\cline{#1}\cline{#2}}
+\newcommand{\twoc}[1]{\multicolumn{2}{c |}{#1}}
+\end{verbatim}
+\end{shaded}
+
+\subsection{Cleaned Up}
+\begin{shaded}
+  \begin{verbatim}
+\begin{tabular}{| c | c | c | c |}
+                                                 \hl
+  foo     & \twor{bar}   & bash        & blah  \\\clv{1-1}{3-4}
+  blah    &              & \twoc{meh}          \\\hl
+  phlegm  & lorem        & ipsum       & dolor \\\hl
+\end{tabular}
+\end{verbatim}
+\end{shaded}
+
+\section{Minipages}
+\begin{shaded}
+  \begin{verbatim}
+\pex
+\begin{minipage}[t]{0.45\textwidth}
+  \begingl
+  \gla karo\l{} em gr-el hayeren-ov //
+  \glb able {\sc 1sg.pres} write-{\sc inf} Armenian-{\sc inst} //
+  \glft `I am able to write in Armenian.' //
+  \endgl
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+  \Tree [.ModP [.Mod karo\l{} ] [.TP [.T {\sc pres} ]
+        [.VP [.V em ] [.TP [.PRO ] [.T [.T -el ]
+        [.VP [.V gr ] [.NP [.N hayerenov ] ] ] ] ] ] ] ]
+\end{minipage}
+\xe
+\end{verbatim}
+\end{shaded}
+
+
+\section{Math Typesetting}
+There are a few ways of entering the mathematics environment...
+
+\begin{shaded}
+\begin{minipage}{0.2\textwidth}
+\begin{verbatim}
+\[ <block> \]
+\end{verbatim}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{verbatim}
+\( <inline> \)
+\end{verbatim}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{verbatim}
+$$ <block> $$
+\end{verbatim}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{verbatim}
+$ <inline> $
+\end{verbatim}
+\end{minipage}
+\end{shaded}
+
+\subsection{Basic Case}
+\begin{shaded}
+\begin{verbatim}
+A set \( \mathcal{S} \) in \( \mathbb{R}^n \) is said to be convex if
+\[ \mathbf{x}_1, \mathbf{x}_2 \in \mathcal{S} \implies \lambda \mathbf{x}_1 +
+(1-\lambda) \mathbf{x}_2 \in \mathcal{S} \text{~~~for all~~~} 0 < \lambda < 1 \]
+\end{verbatim}
+\end{shaded}
+
+\subsection{New Customs}
+\begin{shaded}
+  \begin{verbatim}
+\newcommand{\y}{\lambda}          % λ
+\newcommand{\imps}{~\implies~}    % ==>
+\newcommand{\Rn}{\mathbb{R}^n}    % Math R
+\newcommand{\Set}{\mathcal{S}}    % Set S
+\newcommand{\x}{\mathbf{x}}       % bold x
+\newcommand{\tx}[1]{\text{#1}}    % TEXT environment
+\end{verbatim}
+\end{shaded}
+
+\subsection{Cleaned Up}
+\begin{shaded}
+  \begin{verbatim}
+A set $\Set$ in $\Rn$ is said to be convex if
+\[
+\x_1, \x_2 \in \Set \imps \y\x_1 + (1 - \y) \x_2
+\in \Set \tx{ for all } 0 < \y < 1
+\]
+\end{verbatim}
+\end{shaded}
+
+
+\section{Labels}
+This will introduce the need to do two runs of \XeLaTeX\ to get the correct references throughout the document.
+
+\begin{shaded}
+  \begin{verbatim}
+\section{Labels}
+\label{sec:labels}
+
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{| c | c |}
+      some & basic \\
+      info & here \\
+    \end{tabular}
+  \end{center}
+  \caption{A Table} \label{tab:mytable}
+\end{table}
+
+\vspace{0.5cm}
+
+In this section, Section \ref{sec:labels}, we can see an example of labeling.
+In this case, you can see Table \ref{tab:mytable}.
+\end{verbatim}
+\end{shaded}
+
+
+\section{Bibliographies}
+This will build on the section concerning labels by introducing the need to run Bib\TeX\ followed by \XeLaTeX\ to update citations. This will get us to the final toolchain of a typical complex \LaTeX\ build.
+
+Basic citation commands are fairly straightforward. You need to include an extra file, a \texttt{.bib} file containing Bib\TeX\ markup with your citations. Just about ever reference management program will be able to export Bib\TeX\ from your already existing database.
+
+\subsection{Preamble}
+There are a couple of options for compiling bibliographies. My recommendation is to use settings like the following:
+
+\begin{shaded}
+\begin{verbatim}
+    \usepackage[backend=biber,style=apa,sorting=nyt]{biblatex}
+    \addbibresource{<your_bibliography.bib>}
+\end{verbatim}
+\end{shaded}
+
+You must cite at least one reference in your document. To do this, you can simply add the citekey in a command like the following:
+
+\begin{shaded}
+\begin{verbatim}
+    \cite{author2020} <OR> \nocite{author2020}
+\end{verbatim}
+\end{shaded}
+
+Then at the bottom of your document, you can simply add:
+
+\begin{shaded}
+\begin{verbatim}
+    \printbibliography <OR> printbibliography[title=Your Title]
+\end{verbatim}
+\end{shaded}
+
+\subsection{The Toolchain}
+
+Note that with the addition of Bib\TeX\ to the workflow, we now have to modify our toolchain just like we did when working with labels. The workflow for compiling citations is as follows:
+
+\tikzstyle{block} = [rectangle, draw, fill=blue!15, text width=6em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{file} = [rectangle, draw, fill=red!15, text width=3em, text centered, minimum height=2em]
+\tikzstyle{pdf} = [circle, draw, fill=green!15, text width=5em, text centered, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[node distance = 4cm, auto]
+  \node [block] (first) { (1) \LaTeX };
+  \node [block, right of=first] (second) { (2) Bib\TeX };
+  \node [block, right of=second] (third) { (3) \LaTeX };
+  \node [block, right of=third] (fourth) { (4) \LaTeX };
+
+  \node [file, above of=third, yshift=-1.5cm] (tex) { .tex };
+  \node [file, above of=second, yshift=-2.5cm] (bib) { .bib };
+  \node [file, below of=first, xshift=2cm, yshift=2.5cm] (aux) { .aux };
+  \node [file, below of=second, xshift=2cm, yshift=2.5cm] (bbl) { .bbl };
+
+  \draw [line] (tex) -| (first);
+  \draw [line] (first) |- (aux);
+  \draw [line] (bib) -- (second);
+  \draw [line] (aux) |- (second);
+  \draw [line] (second) -| (bbl);
+  \draw [line] (bbl) -| (third);
+  \draw [line] (bbl) -| (fourth);
+  \draw [line] (tex) -- (third);
+  \draw [line] (tex) -| (fourth);
+\end{tikzpicture}
+\caption{The \XeLaTeX + Bib\TeX\ Toolchain}
+\end{center}
+\end{figure}
+
+\subsection{Annotated Bibliographies}
+
+You might find occasion to export your entire bibliography into a PDF document, say for the purposes of providing your advisor or committee a list of references. To do this, you can invoke the command \texttt{nocite\{*\}}.
+
+A downside to this approach is that there is no easy way to add annotations directly into the bibliography, since it outputs the reference list as one block. There are some bibliography styles (like IEEEannot.bst) that will add an \texttt{annote} key to Bib\TeX\ , but this means you have you maintain your annotations directly in the \texttt{.bib} file---yuck!
+
+Luckily, we're clever and can get around this fairly straightforwardly with a custom command.
+
+\subsubsection{New Customs}
+\begin{shaded}
+\begin{verbatim}
+\newcommand{\anentry}[2]{
+  \nocite{#1}
+  \printbibliography[keyword={#1}, title={#2}]}
+\end{verbatim}
+\end{shaded}
+
+For this, you would have to add a \texttt{keyword} key to each bibliography item you wish you include this way. I tend to just use the citekey. Then we can feed the command our options:
+
+\begin{shaded}
+\begin{verbatim}
+    \anentry{author2020}{Author (2020)}
+    \begin{shaded}
+      \begin{quote}
+      \end{quote}
+    \end{shaded}
+\end{verbatim}
+\end{shaded}
+
+Notice that we could also define a custom environment for this, taking care of the entire annotation block all at once.
+
+To make the bibliography cleaner, I like to modify my \texttt[usepackage[...]{biblatex}] to include an option \texttt[defernumbers=true] to suppress numbering, should it appear.
+
+\section{Graphics}
+\subsection{Importing Graphics}
+
+\begin{shaded}
+\begin{verbatim}
+% \graphicspath{ {./images/ } }
+% \includegraphics[scale=1.5]{graphic}
+\end{verbatim}
+\end{shaded}
+
+\subsection{Making Graphics}
+\begin{shaded}
+  \begin{verbatim}
+\usepackage{tikz}
+  \usetikzlibrary{decorations.text}
+
+\begin{tikzpicture}[node distance = 4cm, auto]
+  \node [block] (first) { (1) \LaTeX };
+  \node [block, right of=first] (second) { (2) Bib\TeX };
+  \node [block, right of=second] (third) { (3) \LaTeX };
+  \node [block, right of=third] (fourth) { (4) \LaTeX };
+
+  \node [file, above of=third, yshift=-1.5cm] (tex) { .tex };
+  \node [file, above of=second, yshift=-2.5cm] (bib) { .bib };
+  \node [file, below of=first, xshift=2cm, yshift=2.5cm] (aux) { .aux };
+  \node [file, below of=second, xshift=2cm, yshift=2.5cm] (bbl) { .bbl };
+
+  \draw [line] (tex) -| (first);
+  \draw [line] (first) |- (aux);
+  \draw [line] (bib) -- (second);
+  \draw [line] (aux) |- (second);
+  \draw [line] (second) -| (bbl);
+  \draw [line] (bbl) -| (third);
+  \draw [line] (bbl) -| (fourth);
+  \draw [line] (tex) -- (third);
+  \draw [line] (tex) -| (fourth);
+\end{tikzpicture}
+\end{verbatim}
+\end{shaded}
+
+\section{Templates}
+\begin{verbatim}
+  http://mrzool.cc/tex-boilerplates/
+  https://www.latextemplates.com/
+  https://www.overleaf.com/latex/templates
+\end{verbatim}
+
+\end{document}

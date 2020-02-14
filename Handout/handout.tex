@@ -1,0 +1,184 @@
+% arara: xelatex
+
+\documentclass[justified]{tufte-handout}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{multirow}
+\usepackage{fancyvrb}
+\usepackage{lipsum}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,float}
+
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+  \colorlet{shadecolor}{orange!15}
+
+\input{macros.tex}
+\begin{document}
+
+% Handout Title ========================================= %
+\noindent{\huge Introduction to \LaTeX}
+\vspace{0.25cm}
+
+\noindent{\huge \textit{Advanced Topics}}
+\vspace{1cm}
+
+
+% Start of Body ========================================= %
+\section{Introduction}
+
+% WYSIWYG ``what you see is what you get''
+% WYWIWYM ``what you write is what you mean'' -- better aligned with what we as researchers regularly engage in. It is \textit{precision}.
+
+% Rather than having a bunch of completely decontextualized sections on advanced topics and then putting things together in a separate "workflow" section at the end, I should just embed the introduction of features/concepts in the making latex yours thesis.
+
+% I should frame things around a selection of activities graduate researchers regularly engage in.
+
+\subsection{Assumptions}
+
+\subsection{Configuration}
+% NOTE TeX engines and associated comments
+
+\renewcommand{\arraystretch}{1.5}
+\begin{marginfigure}
+\begin{tabular}{| c | c | c |}
+  \hline
+
+Engine      & Format                        & Output  \\\hline
+\TeX        & \multirow{4}{*}{Plain \TeX}   & DVI     \\\cline{1-1}
+                                                        \cline{3-3}
+pdf\TeX     &               & \multirow{3}{*}{PDF}    \\\cline{1-1}
+\XeTeX      &                               &         \\\cline{1-1}
+Lua\TeX     &                               &         \\\hline
+\LaTeX      & \multirow{4}{*}{\LaTeX}       & DVI     \\\cline{1-1}
+                                                        \cline{3-3}
+pdf\LaTeX   &               & \multirow{3}{*}{PDF}    \\\cline{1-1}
+\XeLaTeX    &               &                         \\\cline{1-1}
+Lua\LaTeX   &               &                         \\
+
+  \hline
+\end{tabular}
+\end{marginfigure}
+
+\section{Use Cases}
+
+\textbf{Start with discipline-specific use-cases, e.g. mathematics typesetting.}\\
+
+Math typesetting can be especially difficult in most document processing systems. In \LaTeX, it isn't much easier---in fact, it's harder---but the precision control it affords is without equal.
+
+\begin{marginfigure}%
+  \begin{minipage}[t]{1.0\textwidth}
+    % \begin{shaded}
+\begin{equation*}
+ \lim_{ x \rightarrow 0 }{ \frac{e^x - 1} {2x} }
+ \overset{ \left[ \frac{0}{0} \right] }{\underset{ \mathrm{H}}{=} }
+ \lim_{ x \rightarrow 0 }{ \frac{e^x}{2} } = { \frac{1}{2} }
+\end{equation*}
+    % \end{shaded}
+  \end{minipage}
+\end{marginfigure}
+
+For instance, consider the example on the right (L'H\^{o}pital's Rule). This was produced within the \textsc{math environment}, of which there is two flavors (accessible by a few different notations). The following is the code which produced the expression representing L'H\^{o}pital's Rule:
+
+\begin{figure}
+\begin{shaded}
+\begin{Verbatim}
+
+\begin{equation*}
+
+\lim_{x \rightarrow 0}{\frac{e^x - 1}{2x}}
+\overset{\left[\frac{0}{0}\right]}{\underset{\mathrm{H}}{=}}
+\lim_{x\rightarrow 0}{\frac{e^x}{2}} = {\frac{1}{2}}
+
+\end{equation*}
+\end{Verbatim}
+\end{shaded}
+\end{figure}
+
+
+\subsection{Taking Note}
+
+Now let's say you want to use \LaTeX\ for notetaking, modeling, or general day-to-day use, but perhaps the math markup is slowing you down. We can get around this by defining our own commands.\\
+
+% Notes, memorandums
+
+% Lab notes and research journals
+
+% Math mode
+
+
+% Colored boxes, theorems, etc.
+
+\subsection{Annotated Bibliographies}
+
+% BibTeX, Biber
+
+% In this section, we can showcase defining a custom command (\abentry{...}{...}) and offloading it to a structure.tex document.
+
+\subsection{Drafting Manuscripts}
+
+% Since you've developed a strong bibliographical database and have generated bibliographies in LaTeX, you have a great foundation for starting manuscripts.
+
+% Numbering, use-case packages
+
+% Hyperref, labeling, and referencing within a document
+
+% using Footnotes
+
+\subsection{Presenting Your Work}
+
+Beamer and posters
+
+% Controlling page size and document orientation
+
+% Tikz! :D
+
+\section{Under The Hood}
+
+When compiling a document that has a bibliography file, the situation is a fair bit more complex. Rather than running a single instance of the engine program on the master \texttt{.tex} file, we must run several instances of both the \LaTeX engine (or some variant) and at least one instance of the Bib\TeX engine (or some variant). This is schematized in the following figure:
+
+\tikzstyle{block} = [rectangle, draw, fill=blue!15, text width=6em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{file} = [rectangle, draw, fill=red!15, text width=3em, text centered, minimum height=2em]
+\tikzstyle{pdf} = [circle, draw, fill=green!15, text width=5em, text centered, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+
+\begin{figure*}
+\begin{tikzpicture}[node distance = 4cm, auto]
+  \node [block] (first) { (1) \LaTeX };
+  \node [block, right of=first] (second) { (2) Bib\TeX };
+  \node [block, right of=second] (third) { (3) \LaTeX };
+  \node [block, right of=third] (fourth) { (4) \LaTeX };
+
+  \node [file, above of=third, yshift=-1.5cm] (tex) { .tex };
+  \node [file, above of=second, yshift=-2.5cm] (bib) { .bib };
+  \node [file, below of=first, xshift=2cm, yshift=2.5cm] (aux) { .aux };
+  \node [file, below of=second, xshift=2cm, yshift=2.5cm] (bbl) { .bbl };
+
+  % \node [pdf, below of=fourth, yshift=1cm] (pdf) { PDF };
+
+  \draw [line] (tex) -| (first);
+  \draw [line] (first) |- (aux);
+  \draw [line] (bib) -- (second);
+  \draw [line] (aux) |- (second);
+  \draw [line] (second) -| (bbl);
+  \draw [line] (bbl) -| (third);
+  \draw [line] (bbl) -| (fourth);
+  \draw [line] (tex) -- (third);
+  \draw [line] (tex) -| (fourth);
+
+\end{tikzpicture}
+\end{figure*}
+
+\noindent As before, we first run \LaTeX\, as in step (1). The \LaTeX\ engine reads the master \texttt{.tex} file and outputs a PDF as before, but it also outputs a \texttt{.aux} file which contains a list of citation keys found in the main document.
+
+This \texttt{aux} file is critical for step (2). Bib\TeX\ reads the \texttt{.bib} file to get the bibliographical information relevant to the citekeys found in the \texttt{.aux} file. Bib\TeX\ outputs a \texttt{.bbl} file, which factors into step (3).
+
+A second run of the \LaTeX\ engine is required to read the \texttt{.bbl} file, which now has the necessary information to correctly position the citations and references with the correct formatting.
+
+Finally, in step (4), \textit{at least} one last run of \LaTeX\ must be performed in order to update any crossreferences within the document. If your document has a table of contents, as many do, the addition of the citations and references in step (3) is likely to have shifted where the page breaks fall with respect to the document content. This final step is crucial for factoring in this shift.
+
+
+\subsection{Class Packages}
+
+\end{document}

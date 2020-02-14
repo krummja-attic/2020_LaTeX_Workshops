@@ -1,0 +1,103 @@
+%% This is file `mem13.clo', generated as a convex
+%% combination of mem12.clo and mem14.clo
+%%
+%%   This work may be distributed and/or modified under
+%%   the conditions of the LaTeX Project Public License,
+%%   either version 1.3 of this license or (at your
+%%   option) any later version.
+%%   The latest version of the license is in
+%%      http://www.latex-project.org/lppl.txt
+%%   and version 1.3 or later is part of all distributions
+%%   of LaTeX version 2003/06/01 or later.
+%%
+%%   This work has the LPPL maintenance status "maintained".
+%%
+\ProvidesFile{mem13.clo}%
+       [2016/05/17 v0.01 memoir class 13pt size option]
+\renewcommand{\normalsize}{%
+   \@setfontsize\normalsize{13.2}{16.0}%
+   \abovedisplayskip 13.2\p@ \@plus3\p@ \@minus7.5\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6.75\p@ \@plus3.5\p@ \@minus3\p@
+   \belowdisplayskip \abovedisplayskip
+   \let\@listi\@listI}
+\normalsize
+\newcommand{\small}{%
+   \@setfontsize\small\@xiipt{14.0}%
+   \abovedisplayskip 11.5\p@ \@plus3\p@ \@minus6\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6.5\p@ \@plus3.5\p@ \@minus3\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 10\p@ \@plus3.5\p@ \@minus5.5\p@
+               \parsep 5.25\p@ \@plus2.5\p@ \@minus\p@
+               \itemsep \parsep
+%%               \itemindent\z@
+              }%
+   \belowdisplayskip \abovedisplayskip
+}
+\newcommand{\footnotesize}{%
+   \@setfontsize\footnotesize\@xipt\@xiipt
+   \abovedisplayskip 10.5\p@ \@plus2.5\p@ \@minus5.5\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6.25\p@ \@plus3.25\p@ \@minus3\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 6.25\p@ \@plus2.75\p@ \@minus2.5\p@
+               \parsep 3.5\p@ \@plus2.5\p@ \@minus\p@
+               \itemsep \parsep
+%%               \itemindent\z@
+              }%
+   \belowdisplayskip \abovedisplayskip
+}
+\newcommand*{\miniscule}{\@setfontsize\miniscule\@viiipt{8.8}}
+\newcommand*{\tiny}{\@setfontsize\tiny\@ixpt{10}}
+\newcommand*{\scriptsize}{\@setfontsize\scriptsize\@xpt\@xipt}
+\newcommand*{\large}{\@setfontsize\large{14.5}{20}}
+\newcommand*{\Large}{\@setfontsize\Large{18.5}{23.5}}
+\newcommand*{\LARGE}{\@setfontsize\LARGE{22}{27}}
+\newcommand*{\huge}{\@setfontsize\huge{27}{33}}
+\ifextrafontsizes
+  \newcommand*{\Huge}{\@setfontsize\Huge{33}{40}}
+  \newcommand*{\HUGE}{\@setfontsize\HUGE{40}{48}}
+\else
+  \let\Huge=\huge
+  \let\HUGE=\huge
+\fi
+\setlength{\onelineskip}{16\p@}
+\if@twocolumn
+  \setlength\parindent{1em}
+\else
+  \setlength\parindent{1.5em}
+\fi
+\setlength\smallskipamount{3\p@ \@plus 1\p@ \@minus 1\p@}
+\setlength\medskipamount{6\p@ \@plus 2\p@ \@minus 2\p@}
+\setlength\bigskipamount{12\p@ \@plus 4\p@ \@minus 4\p@}
+\setlength\headheight{16\p@}
+\setlength\headsep{.3in}
+\setlength\topskip{13.2\p@}
+\setlength\footskip{33\p@}
+\setlength\maxdepth{.5\topskip}
+\setlength\@maxdepth\maxdepth
+\setlength\footnotesep{9\p@}
+\setlength{\skip\footins}{11.9\p@ \@plus 4\p@ \@minus 2\p@}
+\setlength\floatsep    {13.2\p@ \@plus 2\p@ \@minus 2\p@}
+\setlength\textfloatsep{20\p@ \@plus 2\p@ \@minus 4\p@}
+\setlength\intextsep   {14\p@ \@plus 4\p@ \@minus 4\p@}
+\setlength\dblfloatsep    {14\p@ \@plus 2\p@ \@minus 4\p@}
+\setlength\dbltextfloatsep{20\p@ \@plus 2\p@ \@minus 4\p@}
+\setlength\@fptop{0\p@ \@plus 1fil}
+\setlength\@fpsep{10\p@ \@plus 2fil}
+\setlength\@fpbot{0\p@ \@plus 1fil}
+\setlength\@dblfptop{0\p@ \@plus 1fil}
+\setlength\@dblfpsep{10\p@ \@plus 2fil}
+\setlength\@dblfpbot{0\p@ \@plus 1fil}
+\setlength\lxvchars{372\p@} % standard 390pt
+\setlength\xlvchars{264\p@} %
+\if@twocolumn
+  \setlength\marginparsep{10\p@}
+\else
+  \setlength\marginparsep{7\p@}
+\fi
+\setlength{\marginparpush}{7\p@}
+\endinput
+%%
+%% End of file `mem13.clo'.

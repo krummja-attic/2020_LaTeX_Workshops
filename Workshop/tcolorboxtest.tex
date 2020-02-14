@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage[all]{tcolorbox}
+
+\begin{document}
+
+\newtcblisting{myjs}{listing engine=minted,
+  minted style=colorful,
+  minted language=javascript,
+  minted options={
+    fontsize=\small,
+    breaklines,
+    autogobble,
+    linenos,
+    numbersep=3mm},
+  colback=blue!5!white,colframe=blue!75!black,listing only,
+  left=5mm,enhanced,
+  overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+    rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}}
+
+\begin{myjs}
+  function SomeClass(obj) {
+    this.name = obj.name;
+    this.surname = obj.surname;
+  }
+
+  var instantiate = new SomeClass({
+    name: 'Jonathan',
+    surname: 'Crum'
+  });
+\end{myjs}
+\end{document}
